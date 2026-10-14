@@ -1,0 +1,7 @@
+## NEW code: detached source clone proj8 (treehouse.toml pins base_branch=trunk so treehouse can hand out a slot), no --base-branch
+source clone HEAD: detached
+$ FM_HOME=$LAB bin/fm-spawn.sh live-detached-r2 /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/proj8 --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8
+error: could not resolve the checked-out branch of source clone '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/proj8' for pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/th/.treehouse/proj8-f9b97a/1/proj8', which has no origin to ask (is its HEAD detached?); pass --base-branch to name the branch to start from
+EXIT=1
+no task metadata published

@@ -1,0 +1,7 @@
+## BASELINE (pre-change 8c9c67d): --base-branch feature on origin-less proj5
+$ FM_HOME=$LAB bin/fm-spawn.sh live-base-old-r1 /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/proj5 --scout --base-branch feature
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8
+warn: no registry at /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/data/projects.md; defaulting proj5 to no-mistakes off
+error: pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/th/.treehouse/proj5-2e03b6/1/proj5' has no origin, so it cannot start from base branch 'feature'
+EXIT=1
+no task metadata published

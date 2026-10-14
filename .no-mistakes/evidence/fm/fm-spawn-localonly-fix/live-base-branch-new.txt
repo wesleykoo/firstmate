@@ -1,0 +1,10 @@
+## NEW code: --base-branch feature on origin-less proj3
+$ FM_HOME=$LAB bin/fm-spawn.sh live-base-new-r1 /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/proj3 --scout --base-branch feature
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8
+warn: no registry at /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/data/projects.md; defaulting proj3 to no-mistakes off
+spawned live-base-new-r1 harness=codex kind=scout window=primary:fm-live-base-new-r1 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/th/.treehouse/proj3-404e38/1/proj3
+EXIT=0
+slot HEAD=9e347cb0b80facbdbefd555df3b0faf8c6dbfa5d feature=9e347cb0b80facbdbefd555df3b0faf8c6dbfa5d trunk=022d696e85da02c6991c8e9433682091847d54bf
+base_branch=feature
+README.md
+feature.txt

@@ -1,0 +1,7 @@
+## NEW code: --base-branch nope (absent) on origin-less proj6
+$ FM_HOME=$LAB bin/fm-spawn.sh live-missing-r1 /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/proj6 --scout --base-branch nope
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8
+warn: no registry at /var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T//fm-lab.59GEU8/data/projects.md; defaulting proj6 to no-mistakes off
+error: source clone '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/proj6' has no local branch 'nope' for pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.59GEU8/th/.treehouse/proj6-e6ad06/1/proj6'; refusing to launch from a potentially stale base
+EXIT=1
+no task metadata published
