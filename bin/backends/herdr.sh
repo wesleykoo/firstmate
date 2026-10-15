@@ -1479,6 +1479,13 @@ fm_backend_herdr_pane_idle_shell_sample() {  # <session> <pane-id>
 # New-format └ ... · p:<token> children and, for compatibility only, already
 # adjacent old-format firstmate/... or 2ndmate-<id>/... projections may extend
 # the block read-only; they are never renamed or moved.
+# Any workspace that is not itself a child row is a valid owner for the
+# new-format children that follow it, whatever its label: a primary home in a
+# renamed workspace (for example "fm-retire"), a second primary home, or a
+# captain-made workspace. Requiring the literal "firstmate"/"2ndmate-<id>"
+# labels here made one such row poison ordering for every later spawn in the
+# session, so all subsequent children were left at the end of the sidebar
+# under whichever workspace happened to precede them.
 #
 # This is presentation-only and always returns success.
 # Every unavailable, ambiguous, failed, or unverifiable ordering step prints a
@@ -1507,9 +1514,6 @@ fm_backend_herdr_projection_order_best_effort() {  # <session> <created-workspac
       then .workspace_id == $parent_ws
       else (.label | type) == "string" and .label == $parent
       end;
-    def is_top_level_parent:
-      (.label | type) == "string"
-      and ((.label == "firstmate") or (.label | test("^2ndmate-[^/]+$")));
     def is_new_child:
       (.label | type) == "string"
       and (.label | test("^└ .+ · p:[A-Za-z0-9_-]{22}$"));
@@ -1542,8 +1546,6 @@ fm_backend_herdr_projection_order_best_effort() {  # <session> <created-workspac
     | (reduce range($pidx + 1 + $block; $current) as $i (
         {valid: true, active_parent: null};
         if .valid == false then .
-        elif ($spaces[$i] | is_top_level_parent) then
-          .active_parent = $spaces[$i].label
         elif ($spaces[$i] | is_new_child) then
           if .active_parent == null then .valid = false else . end
         elif ($spaces[$i] | is_legacy_child) then
@@ -1556,7 +1558,7 @@ fm_backend_herdr_projection_order_best_effort() {  # <session> <created-workspac
               .
             end
         else
-          .active_parent = null
+          .active_parent = (if (.label | type) == "string" then .label else "" end)
         end
       )) as $remainder
     | select($remainder.valid == true)
@@ -2720,6 +2722,10 @@ fm_backend_herdr_projection_parent_workspace_exact() {  # <session> <parent-labe
 # fm_backend_herdr_projection_live_binding_matches: verify one exact projected
 # workspace, its single task tab/pane, its unique token label, and its current
 # position inside the exact parent workspace's contiguous child block.
+# The parent is matched by exact workspace id only: its sidebar label may
+# legitimately differ from <parent-label> (a primary home in a workspace the
+# captain named something other than "firstmate"), and requiring the home
+# label there left such homes' journals stuck at version 1 forever.
 # This read-only predicate grants no mutation authority by itself.
 fm_backend_herdr_projection_live_binding_matches() {  # <session> <token> <workspace> <tab> <pane> <parent-workspace> <parent-label> <workspace-label> <task-label>
   local session=$1 token=$2 workspace=$3 tab=$4 pane=$5 parent_workspace=$6
@@ -2744,7 +2750,7 @@ fm_backend_herdr_projection_live_binding_matches() {  # <session> <token> <works
       | select(([$spaces[]? | select(.workspace_id == $workspace and .label == $workspace_label)] | length) == 1)
       | select(([$spaces[]? | select((.label | type) == "string" and (.label | endswith(" · p:" + $token)))] | length) == 1)
       | select(([$spaces[]? | select((.label | type) == "string" and (.label | endswith(" · p:" + $token)) and .workspace_id == $workspace)] | length) == 1)
-      | select(([$spaces[]? | select(.workspace_id == $parent_workspace and .label == $parent_label)] | length) == 1)
+      | select(([$spaces[]? | select(.workspace_id == $parent_workspace)] | length) == 1)
       | ([range(0; $spaces | length) | select($spaces[.].workspace_id == $parent_workspace)]) as $parents
       | ([range(0; $spaces | length) | select($spaces[.].workspace_id == $workspace)]) as $children
       | select(($parents | length) == 1 and ($children | length) == 1)

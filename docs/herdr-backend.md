@@ -285,7 +285,8 @@ Projected children are placed in one contiguous block immediately after their ow
 - The account-private per-session lock.
 
 Existing legacy child labels may extend an already adjacent block read-only but are never renamed or migrated.
-A foreign, ambiguous, detached, or manually interleaved child makes ordering skip with a warning rather than rewriting the layout.
+Any workspace that is not itself a child row owns the new-format children that follow it, whatever its label, so a renamed primary home or a captain workspace with children below it never blocks a later spawn's ordering.
+An ambiguous parent, or a detached legacy child sitting under a different owner, makes ordering skip with a warning rather than rewriting the layout.
 
 Ordering failure never fails the task spawn.
 Firstmate does not retry, adopt, reuse, close, delete, or rename anything in response to an unavailable method, lock contention, ambiguous socket, lost response, failed move, or verification mismatch.

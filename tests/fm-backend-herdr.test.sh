@@ -3333,28 +3333,52 @@ SH
   pass "herdr presentation ordering: the launcher's exact parent workspace id disambiguates a duplicated home label without moving anything"
 }
 
-test_projection_order_foreign_new_child_before_parent_is_read_only() {
-  local dir log resp fb mover out status
-  dir="$TMP_ROOT/projection-order-foreign-new"; mkdir -p "$dir/responses"
-  log="$dir/log"; resp="$dir/responses"; mover="$dir/mover"; : > "$log"
-  printf '%s\n' '{"result":{"workspaces":[{"workspace_id":"w1","label":"firstmate","focused":true},{"workspace_id":"wH","label":"human-notes","focused":false},{"workspace_id":"w2","label":"└ foreign · p:AbCdEfGhIjKlMnOpQrStUv","focused":false},{"workspace_id":"w3","label":"2ndmate-alpha","focused":false},{"workspace_id":"w4","label":"└ new · p:ZyXwVuTsRqPoNmLkJiHgFe","focused":false}]}}' > "$resp/1.out"
+test_projection_order_child_under_renamed_or_foreign_parent_does_not_block() {
+  local dir log resp fb mover mover_log out status
+  dir="$TMP_ROOT/projection-order-renamed-parent"; mkdir -p "$dir/responses"
+  log="$dir/log"; resp="$dir/responses"; mover="$dir/mover"; mover_log="$dir/mover.log"
+  : > "$log"; : > "$mover_log"
+  # A second primary home in a workspace named "fm-retire" owns a child, and a
+  # captain workspace owns another. Neither may block the new firstmate child
+  # (w8) from moving directly under its exact parent w4.
+  printf '%s\n' '{"result":{"workspaces":[{"workspace_id":"w1","label":"~"},{"workspace_id":"w4","label":"firstmate"},{"workspace_id":"w5","label":"2ndmate-alpha"},{"workspace_id":"w9","label":"fm-retire"},{"workspace_id":"w11","label":"└ retire-task · p:AbCdEfGhIjKlMnOpQrStUv"},{"workspace_id":"wH","label":"human-notes"},{"workspace_id":"w12","label":"└ foreign · p:AbCdEfGhIjKlMnOpQrStU1"},{"workspace_id":"w8","label":"└ new · p:ZyXwVuTsRqPoNmLkJiHgFe"}]}}' > "$resp/1.out"
+  printf '%s\n' '{"client":{"version":"0.7.4","protocol":16},"server":{"running":true}}' > "$resp/2.out"
+  # shellcheck disable=SC2016 # $defs is a literal JSON Schema key.
+  printf '%s\n' '{"schemas":{"request":{"oneOf":[{"properties":{"method":{"const":"workspace.move"}}}],"$defs":{"WorkspaceMoveParams":{"required":["workspace_id","insert_index"],"properties":{"insert_index":{"type":"integer"}}}}}}}' > "$resp/3.out"
+  printf '%s\n' '{"sessions":[{"name":"fmtest","running":true,"socket_path":"/tmp/fmtest.sock"}]}' > "$resp/4.out"
   cat > "$mover" <<'SH'
 #!/usr/bin/env bash
-echo called > "$FM_FAKE_MOVER_CALLED"
-exit 0
+printf '%s\t%s\t%s\n' "$1" "$2" "$3" >> "$FM_FAKE_MOVER_LOG"
+printf '%s\n' '{"id":"fm-workspace-move","result":{"type":"workspace_list","workspaces":[{"workspace_id":"w1","label":"~"},{"workspace_id":"w4","label":"firstmate"},{"workspace_id":"w8","label":"└ new · p:ZyXwVuTsRqPoNmLkJiHgFe"},{"workspace_id":"w5","label":"2ndmate-alpha"},{"workspace_id":"w9","label":"fm-retire"},{"workspace_id":"w11","label":"└ retire-task · p:AbCdEfGhIjKlMnOpQrStUv"},{"workspace_id":"wH","label":"human-notes"},{"workspace_id":"w12","label":"└ foreign · p:AbCdEfGhIjKlMnOpQrStU1"}]}}'
 SH
   chmod +x "$mover"
   fb=$(make_herdr_fakebin "$dir")
-  out=$(PATH="$fb:$PATH" FM_HERDR_LOG="$log" FM_HERDR_RESPONSES="$resp" \
-    FM_BACKEND_HERDR_WORKSPACE_MOVER="$mover" FM_FAKE_MOVER_CALLED="$dir/called" \
-    bash -c '. "$0/bin/backends/herdr.sh"; fm_backend_herdr_projection_order_best_effort fmtest w4 firstmate' "$ROOT" 2>&1)
+  out=$(PATH="$fb:$PATH" FM_HERDR_LOG="$log" FM_HERDR_RESPONSES="$resp" FM_HERDR_SCRIPT_STATUS=1 \
+    FM_BACKEND_HERDR_WORKSPACE_MOVER="$mover" FM_FAKE_MOVER_LOG="$mover_log" \
+    bash -c '. "$0/bin/backends/herdr.sh"; fm_backend_herdr_projection_focus_snapshot() { printf "w1\tw1:t1"; }; fm_backend_herdr_projection_focus_restore() { return 0; }; fm_backend_herdr_projection_order_best_effort fmtest w8 firstmate w4' "$ROOT" 2>&1)
   status=$?
-  [ "$status" -eq 0 ] || fail "foreign new-child ordering must not fail the spawn"
-  assert_contains "$out" "ambiguous workspace layout" "foreign new child before its parent did not warn"
-  [ ! -e "$dir/called" ] || fail "foreign new child before its parent attempted workspace.move"
-  [ "$(wc -l < "$log" | tr -d '[:space:]')" = 1 ] \
-    || fail "foreign new-child ordering did more than one read-only workspace list"
-  pass "herdr presentation ordering: a foreign new-format child is warning-only and read-only"
+  [ "$status" -eq 0 ] || fail "renamed-parent projection ordering must not fail the spawn"
+  [ -z "$out" ] || fail "a child under a renamed or captain workspace blocked ordering: $out"
+  [ "$(cat "$mover_log")" = "$(cd /tmp && pwd -P)/fmtest.sock"$'\t'"w8"$'\t'"2" ] \
+    || fail "ordering did not move the exact new child directly under its exact parent: $(cat "$mover_log")"
+  pass "herdr presentation ordering: children under a renamed home or captain workspace do not block a new child from joining its parent"
+}
+
+test_projection_live_binding_matches_parent_by_exact_id_not_label() {
+  local dir resp fb tok
+  tok=ZyXwVuTsRqPoNmLkJiHgFe
+  dir="$TMP_ROOT/projection-binding-renamed-parent"; mkdir -p "$dir/responses"
+  resp="$dir/responses"
+  # The primary home's parent workspace w9 is labeled "fm-retire", not the
+  # home label "firstmate"; the exact parent id must still bind.
+  printf '%s\n' '{"result":{"workspaces":[{"workspace_id":"w4","label":"firstmate"},{"workspace_id":"w9","label":"fm-retire"},{"workspace_id":"w11","label":"└ task · p:'"$tok"'"}]}}' > "$resp/1.out"
+  printf '%s\n' '{"result":{"tabs":[{"tab_id":"w11:t2","label":"fm-task"}]}}' > "$resp/2.out"
+  printf '%s\n' '{"result":{"panes":[{"pane_id":"w11:p1","tab_id":"w11:t2"}]}}' > "$resp/3.out"
+  fb=$(make_herdr_fakebin "$dir")
+  PATH="$fb:$PATH" FM_HERDR_LOG="$dir/log" FM_HERDR_RESPONSES="$resp" \
+    bash -c '. "$0/bin/backends/herdr.sh"; fm_backend_herdr_projection_live_binding_matches fmtest "$1" w11 w11:t2 w11:p1 w9 firstmate "└ task · p:$1" fm-task' "$ROOT" "$tok" \
+    || fail "a parent workspace whose label differs from the home label did not bind by exact id"
+  pass "herdr presentation binding: the exact parent workspace id binds even when its label is not the home label"
 }
 
 test_projection_order_missing_parent_is_read_only() {
@@ -5975,7 +5999,8 @@ test_projection_order_human_spaces_never_move_targets
 test_projection_order_failure_warns_without_cleanup_or_spawn_failure
 test_projection_order_ambiguous_existing_block_is_read_only
 test_projection_order_anchors_the_parent_by_exact_id
-test_projection_order_foreign_new_child_before_parent_is_read_only
+test_projection_order_child_under_renamed_or_foreign_parent_does_not_block
+test_projection_live_binding_matches_parent_by_exact_id_not_label
 test_projection_order_missing_parent_is_read_only
 test_presentation_session_lock_path_is_shared_across_homes
 test_presentation_session_lock_path_rejects_malformed_socket
