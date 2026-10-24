@@ -1,0 +1,22 @@
+# Scenario 6: project WITH origin still fetches and resets to origin's tip
+## fixture (real git repo + real treehouse pool slot seeded, returned, then source advanced)
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/origin2-7226b6/1/origin2
+variant=origin source_HEAD_ref=trunk trunk=ed5a25643f1dfc518222a8b1bb0406b9a2390b83 feature-x=none slot_head=ed5a25643f1dfc518222a8b1bb0406b9a2390b83 remotes=[origin]
+origin/trunk tip=cb86346517e2ef64568df55ffc8e3b7f0709bcf7
+## spawn (real tmux lab socket, real treehouse get)
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF TREEHOUSE_ROOT=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool /Users/wesleykoo/.no-mistakes/worktrees/71259ae7e048/01M4WBSV5AHB67T1XGC9NZPW17/bin/fm-spawn.sh live-origin2 /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/origin2 --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+spawned live-origin2 harness=claude kind=scout window=primary:fm-live-origin2 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/origin2-7226b6/1/origin2
+exit=0
+## after spawn
+seeded slot HEAD=cb86346517e2ef64568df55ffc8e3b7f0709bcf7
+source trunk=ed5a25643f1dfc518222a8b1bb0406b9a2390b83
+seeded slot status: [?? backups/
+?? cache/
+?? sessions/
+?? teams/]
+seeded slot README.md: v2 on origin
+## state/live-origin2.meta
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/origin2-7226b6/1/origin2
+kind=scout
+origin trunk tip=cb86346517e2ef64568df55ffc8e3b7f0709bcf7

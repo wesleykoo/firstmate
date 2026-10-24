@@ -1,0 +1,26 @@
+# Scenario 1: live spawn of a scout on an origin-less project whose pooled slot was stale
+## fixture (real git + real treehouse pool; project has no remotes; default branch 'trunk')
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/localproj-d08e4d/1/localproj
+trunk=41432c0761d92d9a9f38898a6a538a5dd9a0b8dd feature-x=22850e8353dc9b89c6b776cea3c65b9691bc5111 slot_head=bffa4b51855cc5ef2e2ec75719065ea318507302 remotes=[]
+## spawn (real tmux on lab socket, real treehouse get)
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF /Users/wesleykoo/.no-mistakes/worktrees/71259ae7e048/01M4WBSV5AHB67T1XGC9NZPW17/bin/fm-spawn.sh live-originless-1 /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/localproj --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+spawned live-originless-1 harness=claude kind=scout window=primary:fm-live-originless-1 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/localproj-d08e4d/1/localproj
+exit=0
+## after
+slot HEAD=41432c0761d92d9a9f38898a6a538a5dd9a0b8dd
+source clone trunk=41432c0761d92d9a9f38898a6a538a5dd9a0b8dd
+slot README.md: v2 current
+## state/live-originless-1.meta
+window=primary:fm-live-originless-1
+endpoint_task_id=live-originless-1
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/localproj-d08e4d/1/localproj
+project=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/localproj
+harness=claude
+approval_mode=bypass
+kind=scout
+tasktmp=/tmp/fm-live-originless-1
+model=default
+effort=default
+busy_gen=g1792851901.76896.3514
+spawn_gen=s1792851901.76276.25659

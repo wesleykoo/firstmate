@@ -1,0 +1,24 @@
+# Scenario 8: fixed vs pre-fix spawn when treehouse hands out a slot on a stale base (treehouse.toml base_branch=old-release, source clone checked out on trunk, no origin)
+## tomlfix (FIXED code, target 2e17ba0)
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/tomlfix-e9d5e4/1/tomlfix
+variant=plain source_HEAD_ref=trunk trunk=e75cabdae06a37b13cfa8c0214fc61f421203e3e feature-x=d661f5aaeda88ec63cd4c4ba9507c60fb0713d78 slot_head=ce03664fec93cb487928994e289c68854eb74dc8 remotes=[]
+treehouse.toml: base_branch = "old-release"; old-release=ce03664fec93cb487928994e289c68854eb74dc8
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF TREEHOUSE_ROOT=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool /Users/wesleykoo/.no-mistakes/worktrees/71259ae7e048/01M4WBSV5AHB67T1XGC9NZPW17/bin/fm-spawn.sh live-tomlfix /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/tomlfix --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+spawned live-tomlfix harness=claude kind=scout window=primary:fm-live-tomlfix worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/tomlfix-e9d5e4/1/tomlfix
+exit=0
+after: slot HEAD=e75cabdae06a37b13cfa8c0214fc61f421203e3e slot README.md=v2 current | source trunk=e75cabdae06a37b13cfa8c0214fc61f421203e3e old-release=ce03664fec93cb487928994e289c68854eb74dc8
+slot HEAD reflog:
+  0000000000000000000000000000000000000000 ce03664fec93cb487928994e289c68854eb74dc8 wesleykoo <wooseokkoo@hotmail.com> 1792852206 -0400
+  reset: moving to e75cabdae06a37b13cfa8c0214fc61f421203e3e
+## tomlold (PRE-FIX code, base 3004ccb)
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/tomlold-fff5c4/1/tomlold
+variant=plain source_HEAD_ref=trunk trunk=be7974b713613512ca9d01664a749e1c4d398191 feature-x=d2e92700194fcb975c32a808e89820647d42074f slot_head=4c8bbbfb3357469d9e104ed009639327ef9ddb7e remotes=[]
+treehouse.toml: base_branch = "old-release"; old-release=4c8bbbfb3357469d9e104ed009639327ef9ddb7e
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF TREEHOUSE_ROOT=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/oldtree/bin/fm-spawn.sh live-tomlold /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/tomlold --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+spawned live-tomlold harness=claude kind=scout window=primary:fm-live-tomlold worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/tomlold-fff5c4/1/tomlold
+exit=0
+after: slot HEAD=4c8bbbfb3357469d9e104ed009639327ef9ddb7e slot README.md=v1 | source trunk=be7974b713613512ca9d01664a749e1c4d398191 old-release=4c8bbbfb3357469d9e104ed009639327ef9ddb7e
+slot HEAD reflog:
+  0000000000000000000000000000000000000000 4c8bbbfb3357469d9e104ed009639327ef9ddb7e wesleykoo <wooseokkoo@hotmail.com> 1792852206 -0400

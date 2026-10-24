@@ -1,0 +1,17 @@
+# Scenario 3: origin-less --base-branch naming a branch absent locally is refused by name
+## fixture (real git repo + real treehouse pool slot seeded, returned, then source advanced)
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/missing3-458151/1/missing3
+variant=plain source_HEAD_ref=trunk trunk=2ae21bcdf574fbf0b5818f09504888624baa8160 feature-x=5d073630970dde6bc835286862746c5a5297994f slot_head=1f1b20c8c1531909c5ed68adaaa6d7b3e6235b67 remotes=[]
+## spawn (real tmux lab socket, real treehouse get)
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF TREEHOUSE_ROOT=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool /Users/wesleykoo/.no-mistakes/worktrees/71259ae7e048/01M4WBSV5AHB67T1XGC9NZPW17/bin/fm-spawn.sh live-missing3 /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/missing3 --scout --base-branch no-such-branch
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/data/projects.md; defaulting missing3 to no-mistakes off
+error: source clone '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/missing3' has no local branch 'no-such-branch' for pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/missing3-458151/1/missing3'; refusing to launch from a potentially stale base
+exit=1
+## after spawn
+seeded slot HEAD=2ae21bcdf574fbf0b5818f09504888624baa8160
+source trunk=2ae21bcdf574fbf0b5818f09504888624baa8160
+source feature-x=5d073630970dde6bc835286862746c5a5297994f
+seeded slot status: []
+seeded slot README.md: v2 current
+state/live-missing3.meta: absent

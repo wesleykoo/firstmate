@@ -1,0 +1,16 @@
+# Scenario 4: origin-less project whose source clone is detached is refused
+## fixture (real git repo + real treehouse pool slot seeded, returned, then source advanced)
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/detached2-59149f/1/detached2
+variant=detached source_HEAD_ref=DETACHED trunk=157d87fcae9e14cd77a57600c4383e533be0f6ef feature-x=61898ce38f99d7285d414281a9ab1bf45f2b70f1 slot_head=3cd410180bfb89f94f6c5b0f8869de84901abb71 remotes=[]
+## spawn (real tmux lab socket, real treehouse get)
+$ FM_HOME=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF TREEHOUSE_ROOT=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool /Users/wesleykoo/.no-mistakes/worktrees/71259ae7e048/01M4WBSV5AHB67T1XGC9NZPW17/bin/fm-spawn.sh live-detached2 /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/detached2 --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF
+error: could not resolve the checked-out branch of source clone '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/work/detached2' for pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.uB1NOF/pool/.treehouse/detached2-59149f/1/detached2', which has no origin to ask (is its HEAD detached?); pass --base-branch to name the branch to start from
+exit=1
+## after spawn
+seeded slot HEAD=157d87fcae9e14cd77a57600c4383e533be0f6ef
+source trunk=157d87fcae9e14cd77a57600c4383e533be0f6ef
+source feature-x=61898ce38f99d7285d414281a9ab1bf45f2b70f1
+seeded slot status: []
+seeded slot README.md: v2 current
+state/live-detached2.meta: absent
