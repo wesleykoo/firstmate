@@ -1,0 +1,24 @@
+# Scenario 2: source clone detached (no checked-out branch), no origin
+source HEAD: detached slot HEAD before=1840b6076651c88a360db3be6bb3ba300940a376
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3
+●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+●  WATCHER DOWN - SUPERVISION IS OFF
+●  1 task(s) in flight, but no watcher has a fresh beacon (last beat: never, grace 300s).
+●  Trust the emitted supervision protocol for this harness; do not use shell & for watcher repair.
+●  This is a supervision warning only; the guarded operation WILL still run.
+●  watcher supervision needs Stop-owned automatic recovery; inspect the hook registration and startup status before ending the turn.
+●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/work/localproj': it is the spawning project itself; spawning project '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/work/localproj'); inspect window primary:fm-scout-live2
+exit=1
+slot HEAD after=1840b6076651c88a360db3be6bb3ba300940a376
+windows:
+primary:0: bash* (1 panes) [80x24] 
+primary:1: fm-scout-live2 (1 panes) [80x24] 
+Run "treehouse update" to update
+🌳 Setting up worktree...
+failed to create worktree: git worktree add --detach /private/var/folders/4x/6hj
+543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/2/l
+ocalproj refs/remotes/origin/main: fatal: invalid reference: refs/remotes/origin
+/main
+localproj  HEAD
+❯

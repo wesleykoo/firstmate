@@ -1,5 +1,9 @@
 ok - a remote-seeded secondmate home allocates and launches from its Treehouse pool
 ok - a Treehouse slot claim names the launched task, refuses when unclaimable, and is dropped by a locked abort
+ok - a launch refused after its slot claim leaves the pool for a retry and a second task
+ok - a refused polytoken launch leaves its per-id paths alone while another spawn holds the per-id lock
+ok - a non-polytoken launch refused after its slot claim keeps main's abort behavior
+ok - the treehouse-get isolation refusal points only at what survives the abort
 ok - linked spawning home: primary preserves the primary before any refresh
 ok - linked spawning home: primary-alias preserves the primary before any refresh
 ok - linked spawning home: spawning preserves the primary before any refresh
@@ -29,4 +33,8 @@ ok - an unpushed submodule commit keeps the uncommitted-work refusal and survive
 ok - work inside a submodule is still refused as uncommitted work, not called stale
 ok - a stale pin carrying real work is refused conservatively, never called stale
 ok - a stale pin beside other dirt yields the conservative refusal alone, with no stale-pin line
+ok - without the opt-in a local-only ship or a scout still starts from origin's tip while the primary leads
+ok - with the opt-in only a local-only ship or a scout leaves origin's tip, for a primary that strictly contains it, and the review starts where the slot did
+ok - with the opt-in a named base branch still starts from origin's copy
+ok - with the opt-in an unclean slot is still refused, untouched, before any base is chosen
 # all fm-spawn-pool-base-freshen tests passed

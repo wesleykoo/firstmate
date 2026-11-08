@@ -1,0 +1,11 @@
+# Scenario 3: dirty origin-less slot (untracked wip.txt), source trunk advanced
+slot HEAD before=1840b6076651c88a360db3be6bb3ba300940a376 trunk=4f227f9dd9d63082de8ac4166772ea86650a0b0c
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3
+WARNING: watcher still down (same stale episode; last beat: never, grace 300s) - full banner already printed this episode.
+spawned scout-live3 harness=claude kind=scout window=primary:fm-scout-live3 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/2/localproj
+exit=0
+slot HEAD after=1840b6076651c88a360db3be6bb3ba300940a376
+wip.txt after: precious local work
+primary:0: bash* (1 panes) [80x24] 
+primary:1: fm-scout-live3 (1 panes) [80x24] 
+slot2 HEAD=4f227f9dd9d63082de8ac4166772ea86650a0b0c trunk=4f227f9dd9d63082de8ac4166772ea86650a0b0c

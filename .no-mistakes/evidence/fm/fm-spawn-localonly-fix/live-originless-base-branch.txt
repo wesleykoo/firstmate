@@ -1,0 +1,10 @@
+# Scenario 4: --base-branch feature (local-only branch) on origin-less project
+feature=44ea647603d292ae3a8a0b0d8527201e90cdd4f0 trunk=4f227f9dd9d63082de8ac4166772ea86650a0b0c slot1=1840b6076651c88a360db3be6bb3ba300940a376 slot2=4f227f9dd9d63082de8ac4166772ea86650a0b0c
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3
+WARNING: watcher still down (same stale episode; last beat: never, grace 300s) - full banner already printed this episode.
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/data/projects.md; defaulting localproj to no-mistakes off
+spawned scout-live4 harness=claude kind=scout window=primary:fm-scout-live4 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj
+exit=0
+chosen slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj HEAD=44ea647603d292ae3a8a0b0d8527201e90cdd4f0 feature-only.txt=f
+base_branch=feature
+source still on: trunk

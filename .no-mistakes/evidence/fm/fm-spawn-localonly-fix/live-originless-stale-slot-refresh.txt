@@ -1,0 +1,37 @@
+# Scenario 1: stale origin-less treehouse slot, real fm-spawn.sh --scout on lab tmux
+slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj slotHEAD=1705fbc8eff177b3c11348665e0bd7f94ba2d2c0 trunk=1840b6076651c88a360db3be6bb3ba300940a376 remotes=[]
+$ bin/fm-spawn.sh scout-live1 /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/work/localproj --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3
+spawned scout-live1 harness=claude kind=scout window=primary:fm-scout-live1 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj
+exit=0
+post: slot HEAD=1840b6076651c88a360db3be6bb3ba300940a376 trunk=1840b6076651c88a360db3be6bb3ba300940a376 advanced.txt=new
+FETCH_HEAD present? no
+--- state meta
+window=primary:fm-scout-live1
+endpoint_task_id=scout-live1
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj
+project=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/work/localproj
+harness=claude
+approval_mode=bypass
+kind=scout
+tasktmp=/tmp/fm-scout-live1
+model=default
+effort=default
+busy_gen=g1794167414.7028.14507
+spawn_gen=s1794167414.6320.18536
+--- worker pane
+ ▝▝   ▝▝   /…/T/fm-lab.SmrHv3/pool/.treehouse/localproj-97814e/1/localproj
+❯ : Firstmate operational input waiting: read
+  '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrHv3/state
+  /operational-inbox/1794167415-06d73c039c984097.msg' and handle its contents
+  as Firstmate operational input.
+  Running cat '/private/var/folders/4x/6hj543pn37j9fwh6qbxp…
+  ⎿  $ cat '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.SmrH
+     v3/state/operational-inbox/1794167415-06d73c039c984097.msg'
+✽ Tinkering… (8s · ↓ 176 tokens)
+                                                            ◐ medium · /effort
+────────────────────────────────────────────────────────────────────────────────
+❯ 
+────────────────────────────────────────────────────────────────────────────────
+  Opus 5.5 | ██████████ 2% | 29k/1000k | 1840b60 | localproj
+  -- INSERT -- ⏵⏵ bypass permissions on (shift+tab to cycle) · ← for agents
