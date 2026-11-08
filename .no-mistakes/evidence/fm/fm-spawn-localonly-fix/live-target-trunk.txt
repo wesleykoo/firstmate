@@ -1,0 +1,13 @@
+### TARGET 3e36583e, scenario trunk
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.Zel00O/pool/.treehouse/notes-a498d5/1/notes at A=cff32fa4536e1435a4a97b2306f0a721c5886f9d
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=trunk) ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.Zel00O
+error: could not determine the local default branch (main or master) for pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.Zel00O/pool/.treehouse/notes-a498d5/1/notes', which has no origin to ask; pass --base-branch to name the branch to start from
+EXIT=1
+--- result ---
+A(stale)=cff32fa4536e1435a4a97b2306f0a721c5886f9d B(main tip)=7bb4bfa600d25310eff83fa09511faf2bf50dd82 
+meta worktree=<none>
+slot HEAD=7bb4bfa600d25310eff83fa09511faf2bf50dd82 slot files: README.md advanced.txt 
+main still at B: yes
+lab removed: yes

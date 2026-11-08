@@ -1,0 +1,13 @@
+### BASELINE (pre-fix base commit 3e9c781d), scenario missing-base
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.fqljtz/pool/.treehouse/notes-4da4cb/1/notes at A=abbb990b87ca1a55c011fd6ecf73c9b8b49f8732
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=missing-base) ---
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.fqljtz/data/projects.md; defaulting notes to no-mistakes off
+error: pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.fqljtz/pool/.treehouse/notes-4da4cb/1/notes' has no origin, so it cannot start from base branch 'feature/absent'
+EXIT=1
+--- result ---
+A(stale)=abbb990b87ca1a55c011fd6ecf73c9b8b49f8732 B(main tip)=1a44769fe2ee4fad6d3359c194d856972ce4a3b7 
+meta worktree=<none>
+slot HEAD=1a44769fe2ee4fad6d3359c194d856972ce4a3b7 slot files: README.md advanced.txt 
+main still at B: yes
+lab removed: yes

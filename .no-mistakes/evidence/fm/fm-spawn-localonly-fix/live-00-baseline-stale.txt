@@ -1,0 +1,16 @@
+### BASELINE (pre-fix base commit 3e9c781d), scenario stale
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.nK9B3A/pool/.treehouse/notes-233394/1/notes at A=8f047dfd99952a71fd1ab9564b48e92dcf68acbc
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=stale) ---
+spawned lv179416991710068 harness=sleep kind=scout window=primary:fm-lv179416991710068 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.nK9B3A/pool/.treehouse/notes-233394/1/notes
+EXIT=0
+--- result ---
+A(stale)=8f047dfd99952a71fd1ab9564b48e92dcf68acbc B(main tip)=b3d947f78ef8cb22f972852d07263fefc699dc31 
+meta worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.nK9B3A/pool/.treehouse/notes-233394/1/notes
+worker HEAD=b3d947f78ef8cb22f972852d07263fefc699dc31  files: README.md advanced.txt 
+slot HEAD=b3d947f78ef8cb22f972852d07263fefc699dc31 slot files: README.md advanced.txt 
+--- meta ---
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.nK9B3A/pool/.treehouse/notes-233394/1/notes
+kind=scout
+main still at B: yes
+lab removed: yes

@@ -1,0 +1,13 @@
+### BASELINE (pre-fix base commit 3e9c781d), scenario base-branch
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.7Gy0i9/pool/.treehouse/notes-b1ad5b/1/notes at A=fb76298dd5f5acf9e1ffaf4daa6a503bcdbb0d6f
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=base-branch) ---
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.7Gy0i9/data/projects.md; defaulting notes to no-mistakes off
+error: pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.7Gy0i9/pool/.treehouse/notes-b1ad5b/1/notes' has no origin, so it cannot start from base branch 'feature/base'
+EXIT=1
+--- result ---
+A(stale)=fb76298dd5f5acf9e1ffaf4daa6a503bcdbb0d6f B(main tip)=41595e0c2c08cc20ceea0a3621b4fc093cbe5d11 feature/base=f3568e83bdd03b8d2375b61e1df722074458f90b
+meta worktree=<none>
+slot HEAD=41595e0c2c08cc20ceea0a3621b4fc093cbe5d11 slot files: README.md advanced.txt 
+main still at B: yes
+lab removed: yes

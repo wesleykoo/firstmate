@@ -1,0 +1,14 @@
+### TARGET 3e36583e, scenario missing-base
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.UBbyaQ/pool/.treehouse/notes-f381a6/1/notes at A=bb34e04b7deddcacfc86cd3b4f836560784cefac
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=missing-base) ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.UBbyaQ
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.UBbyaQ/data/projects.md; defaulting notes to no-mistakes off
+error: source clone of pooled worktree '/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.UBbyaQ/pool/.treehouse/notes-f381a6/1/notes' has no local branch 'feature/absent'; refusing to launch from a potentially stale base
+EXIT=1
+--- result ---
+A(stale)=bb34e04b7deddcacfc86cd3b4f836560784cefac B(main tip)=a09b4d094a2a9771bc1da26cbcfa989e48684e01 
+meta worktree=<none>
+slot HEAD=a09b4d094a2a9771bc1da26cbcfa989e48684e01 slot files: README.md advanced.txt 
+main still at B: yes
+lab removed: yes

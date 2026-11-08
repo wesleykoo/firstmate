@@ -1,0 +1,17 @@
+### TARGET 3e36583e, scenario stale
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.BeHjeW/pool/.treehouse/notes-dd23d0/1/notes at A=f7ad3622f64c1fe6c27e5b0c12f2abb4315bc9ea
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=stale) ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.BeHjeW
+spawned lv179416992313956 harness=sleep kind=scout window=primary:fm-lv179416992313956 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.BeHjeW/pool/.treehouse/notes-dd23d0/1/notes
+EXIT=0
+--- result ---
+A(stale)=f7ad3622f64c1fe6c27e5b0c12f2abb4315bc9ea B(main tip)=ff892e58fbcb7dc279afefec0ca87f65c3507b5e 
+meta worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.BeHjeW/pool/.treehouse/notes-dd23d0/1/notes
+worker HEAD=ff892e58fbcb7dc279afefec0ca87f65c3507b5e  files: README.md advanced.txt 
+slot HEAD=ff892e58fbcb7dc279afefec0ca87f65c3507b5e slot files: README.md advanced.txt 
+--- meta ---
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.BeHjeW/pool/.treehouse/notes-dd23d0/1/notes
+kind=scout
+main still at B: yes
+lab removed: yes

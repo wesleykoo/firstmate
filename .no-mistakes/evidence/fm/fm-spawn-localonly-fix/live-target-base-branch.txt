@@ -1,0 +1,19 @@
+### TARGET 3e36583e, scenario base-branch
+prewarmed slot=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT/pool/.treehouse/notes-79d650/1/notes at A=1d1ea9e790297f2cd65cc6186a2bb0ae70ba85d5
+origin remotes in project: []
+--- fm-spawn.sh output (scenario=base-branch) ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT
+warn: no registry at /private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT/data/projects.md; defaulting notes to no-mistakes off
+spawned lv179417001931487 harness=sleep kind=scout window=primary:fm-lv179417001931487 worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT/pool/.treehouse/notes-79d650/1/notes
+EXIT=0
+--- result ---
+A(stale)=1d1ea9e790297f2cd65cc6186a2bb0ae70ba85d5 B(main tip)=97a8a1ab8a2155f7b82aaba74801d344c93c4223 feature/base=30dad33d4ca32f588e868b3f8407c341de1d2d51
+meta worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT/pool/.treehouse/notes-79d650/1/notes
+worker HEAD=30dad33d4ca32f588e868b3f8407c341de1d2d51  files: README.md advanced.txt base-only.txt 
+slot HEAD=30dad33d4ca32f588e868b3f8407c341de1d2d51 slot files: README.md advanced.txt base-only.txt 
+--- meta ---
+worktree=/private/var/folders/4x/6hj543pn37j9fwh6qbxpzlzr0000gn/T/fm-lab.1cE3pT/pool/.treehouse/notes-79d650/1/notes
+kind=scout
+base_branch=feature/base
+main still at B: yes
+lab removed: yes
